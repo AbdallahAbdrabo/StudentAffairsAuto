@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AttendanceLibrary\Attendances.Application.csproj" />
+    <ProjectReference Include="..\CourseLibrary\Courses.Application.csproj" />
+    <ProjectReference Include="..\DepartmentLibrary\Departments.Application.csproj" />
+    <ProjectReference Include="..\EnrollmentLibrary\Enrollments.Application.csproj" />
+    <ProjectReference Include="..\ExamLibrary\Exams.Application.csproj" />
+    <ProjectReference Include="..\FacultyLibrary\faculties.Application.csproj" />
+    <ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
+    <ProjectReference Include="..\StudentAffairsAuto.Client\StudentAffairsAuto.Client.csproj" />
+    <ProjectReference Include="..\Students.Application\Students.Application.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

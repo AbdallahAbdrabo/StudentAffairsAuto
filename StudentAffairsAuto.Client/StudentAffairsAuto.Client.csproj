@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>	     
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+    <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.8" />
+	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Attendances.Client\Attendances.Client.csproj" />
+    <ProjectReference Include="..\Courses.Client\Courses.Client.csproj" />
+    <ProjectReference Include="..\Department.Client\Departments.Client.csproj" />
+    <ProjectReference Include="..\Enrollments.Client\Enrollments.Client.csproj" />
+    <ProjectReference Include="..\Exams.Client\Exams.Client.csproj" />
+    <ProjectReference Include="..\faculties.Client\faculties.Client.csproj" />
+    <ProjectReference Include="..\StudentRazorLibrary\Students.Client.csproj" />
+  </ItemGroup>
+
+</Project>

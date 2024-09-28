@@ -1,0 +1,52 @@
+﻿@page "/Student/Edit/{StudentId:int?}"
+@page "/student/Create"
+
+@namespace StudentsClient
+
+@* @inject NavigationManager navigation
+@inject IStringLocalizer<Resource> localizer
+
+@if (student is not null)
+{
+    <EditForm Model="@student" OnValidSubmit="HandleValidSubmit">
+     <FluentValidationValidator />
+        <ValidationSummary />
+
+        <div>
+            <label for="name">@localizer[nameof(Student.Name)]</label>
+            <InputText id="name" @bind-Value="student.Name" class="form-control" />
+        </div>
+
+        <div>
+            <label for="dateOfBirth">@localizer[nameof(Student.DateOfBirth)] :</label>
+            <InputDate id="dateOfBirth" @bind-Value="student.DateOfBirth" class="form-control" />
+        </div>
+
+        <div>
+            <label for="gender">@localizer[nameof(Student.Gender)]:</label>
+            <InputText id="gender" @bind-Value="student.Gender" class="form-control" />
+        </div>
+
+        <div>
+            <label for="phoneNumber">@localizer[nameof(Student.PhoneNumber)]</label>
+            <InputText id="phoneNumber" @bind-Value="student.PhoneNumber" class="form-control" />
+        </div>
+
+        <div>
+            <label for="email">@localizer[nameof(Student.Email)]:</label>
+            <InputText id="email" @bind-Value="student.Email" class="form-control" />
+        </div>
+
+        <div>
+            <label for="address">@localizer[nameof(Student.Address)]:</label>
+            <InputText id="address" @bind-Value="student.Address" class="form-control" />
+        </div>
+
+        <div>
+            <label for="nationalId">@localizer[nameof(Student.NationalID)]</label>
+            <InputText id="nationalId" @bind-Value="student.NationalID" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </EditForm>
+} *@

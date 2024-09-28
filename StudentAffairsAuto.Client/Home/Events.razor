@@ -1,0 +1,27 @@
+﻿@namespace StudentAffairsServer
+
+
+
+<div class="container mt-4">
+    <h2>Upcoming Events</h2>
+    @foreach (var eventItem in events)
+    {
+        <div class="event-item border-bottom py-3 d-flex justify-content-between align-items-center">
+            <div>
+                <p class="mb-1 text-muted">@eventItem.Date</p>
+                <h5>@eventItem.Title</h5>
+                <p class="mb-0">@eventItem.Location</p>
+            </div>
+            <button class="btn btn-primary">REGISTER</button>
+        </div>
+    }
+    <div class="text-center mt-3">
+        <a href="#" class="btn btn-danger">SEE ALL EVENTS</a>
+    </div>
+</div>
+
+<style>
+    .event-item {
+        margin-bottom: 1rem;
+    }
+</style>

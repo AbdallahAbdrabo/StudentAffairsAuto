@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AttendanceLibrary\Attendances.Application.csproj" />
+    <ProjectReference Include="..\CourseLibrary\Courses.Application.csproj" />
+    <ProjectReference Include="..\DepartmentLibrary\Departments.Application.csproj" />
+    <ProjectReference Include="..\EnrollmentLibrary\Enrollments.Application.csproj" />
+    <ProjectReference Include="..\ExamLibrary\Exams.Application.csproj" />
+    <ProjectReference Include="..\FacultyLibrary\faculties.Application.csproj" />
+    <ProjectReference Include="..\StudentLibrary\Students.Application.csproj" />
+    <ProjectReference Include="..\StudentRazorLibrary\Students.Client.csproj" />
+  </ItemGroup>
+
+</Project>
