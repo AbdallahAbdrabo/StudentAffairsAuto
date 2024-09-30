@@ -1,14 +1,14 @@
 ﻿namespace Shared.Application.UnitOfWork;
-public interface IUnitOfWork<TEntity>
+public interface IUnitOfWork<TEntity , TViewModel>
     where TEntity : class
 {
-    Task Create(TEntity student);
+    Task Create(TViewModel viewModel);
 
-    Task<IEnumerable<TEntity>> ReadAll();
-    Task<TEntity?> ReadById(int id);
+    Task<IEnumerable<TViewModel>> ReadAll();
+    Task<TViewModel?> ReadById(int id);
 
-    Task Update(TEntity entity);
+    Task  Update(TViewModel viewModel);
 
-    Task Delete(TEntity student);
+    Task Delete(TViewModel viewModel);
 
 }

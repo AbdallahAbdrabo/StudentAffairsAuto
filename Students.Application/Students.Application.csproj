@@ -10,6 +10,7 @@
 		<ProjectReference Include="..\EnrollmentLibrary\Enrollments.Application.csproj" />
 		<ProjectReference Include="..\Enrollments.Client\Enrollments.Client.csproj" />
 		<ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
+		<ProjectReference Include="..\StudentRazorLibrary\Students.Client.csproj" />
 		
 	</ItemGroup>
 </Project>

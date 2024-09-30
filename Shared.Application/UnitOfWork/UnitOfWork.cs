@@ -1,25 +1,27 @@
 ﻿namespace Shared.Application.UnitOfWork;
 
-public class UnitOfWork<TEntity> : IUnitOfWork<TEntity>
-    where TEntity : class
+public class UnitOfWork<TEntity , TViewModel> : IUnitOfWork<TEntity , TViewModel >
+    where TEntity : class where TViewModel : class
 {
     private readonly ApplicationDbContext _context;
     private readonly IRepository<TEntity> _repository;
+    private readonly IMapper _mapper;
 
     public UnitOfWork(ApplicationDbContext context
-        , IRepository<TEntity> repository)
+        , IRepository<TEntity> repository, IMapper mapper)
     {
         _context = context;
         _repository = repository;
-       
+        _mapper = mapper;
     }
 
-    public async Task Create(TEntity entity)
+    public async Task Create(TViewModel viewModel)
     {
         using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
         {
             try
-            {           
+            {
+                TEntity entity = _mapper.Map<TEntity>(viewModel);
                 await _repository.AddEntity(entity);
                 await _context.SaveChangesAsync();
                 transaction.Commit();
@@ -32,22 +34,27 @@ public class UnitOfWork<TEntity> : IUnitOfWork<TEntity>
         }
     }
 
-    public Task<IEnumerable<TEntity>> ReadAll()
+    public async Task<IEnumerable<TViewModel>> ReadAll()
     {
-        return _repository.GetEtities();
+        IEnumerable<TEntity>? students = (await _repository.GetEtities()).ToList();
+        IEnumerable<TViewModel>? viewModels = _mapper.Map<IEnumerable<TViewModel>>(students);
+        return viewModels ;
     }
-    public Task<TEntity?> ReadById(int id)
+    public async Task<TViewModel?> ReadById(int id)
     {
-        return _repository.GetGetEntityById(id);
+        TEntity? entity = await _repository.GetGetEntityById(id);
+        TViewModel viewModel = _mapper.Map<TViewModel>(entity);
+        return viewModel;
     }
 
 
-    public async Task Update(TEntity entity)
+    public async Task Update(TViewModel viewModel)
     {
         using (IDbContextTransaction transaction = _context.Database.BeginTransaction())
         {
             try
             {
+                TEntity entity = _mapper.Map<TEntity>(viewModel);
                 _repository.UpdateEntity(entity);
                 await _context.SaveChangesAsync();
                 transaction.Commit();
@@ -60,10 +67,12 @@ public class UnitOfWork<TEntity> : IUnitOfWork<TEntity>
         }
     }
 
-    public async Task Delete(TEntity entity)
+    public async Task Delete(TViewModel viewModel)
     {
+        TEntity entity = _mapper.Map<TEntity>(viewModel);
         var delete = _repository.DeleteEntity(entity);
         await _context.SaveChangesAsync();
+      
 
     }
 

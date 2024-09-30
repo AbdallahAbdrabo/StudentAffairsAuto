@@ -1,4 +1,7 @@
 ﻿@using System.Reflection
+@using System.Globalization
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
 <Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="additionalAssemblies">
 
     <Found Context="routeData">
@@ -10,6 +13,33 @@
     private Assembly[] additionalAssemblies = new[]
           {
         Assembly.Load("Students.Client"),
+        Assembly.Load("faculties.Client"),
 
     };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var result = await JS.InvokeAsync<string>("blazorCulture.get");
+            CultureInfo culture;
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                culture = new CultureInfo(result);
+            }
+            else
+            {
+                culture = new CultureInfo("en-US");
+            }
+
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+            // NavigationManager.NavigateTo($"/");
+
+
+            StateHasChanged();
+
+
+        }
+    }
 }

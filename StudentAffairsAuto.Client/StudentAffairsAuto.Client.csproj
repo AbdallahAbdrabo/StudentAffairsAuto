@@ -20,6 +20,7 @@
     <ProjectReference Include="..\Enrollments.Client\Enrollments.Client.csproj" />
     <ProjectReference Include="..\Exams.Client\Exams.Client.csproj" />
     <ProjectReference Include="..\faculties.Client\faculties.Client.csproj" />
+    <ProjectReference Include="..\Shared.Client\Shared.Client.csproj" />
     <ProjectReference Include="..\StudentRazorLibrary\Students.Client.csproj" />
   </ItemGroup>
 

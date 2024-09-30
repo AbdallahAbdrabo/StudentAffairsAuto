@@ -11,8 +11,8 @@ public class StudentEntityConfiguration : IEntityTypeConfiguration<Student>
     {
         builder.ToTable("Students");
         builder.HasKey(s => s.StudentId);
-        builder.Property(s => s.StudentId)
-               .ValueGeneratedNever();
+        builder.Property(s => s.StudentId);
+               
         builder.Property(s => s.Name)
             .IsRequired()
             .HasMaxLength(70);

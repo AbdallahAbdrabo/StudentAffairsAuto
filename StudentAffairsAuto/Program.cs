@@ -5,6 +5,7 @@ using StudentAffairsAuto.Client.Pages;
 using StudentAffairsAuto.Components;
 using Students.Application.Repository1;
 using Students.Application.UnitOfWork1;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,17 +14,18 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 builder.Services.AddControllers();
-
+builder.Services.AddLocalization();
 builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
 
 builder.Services.AddScoped<IStudentsUnitOfWork, StudentsUnitOfWork>();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(http => new HttpClient
 {
     BaseAddress = new Uri(builder.Configuration.GetSection("BaseAddress").Value!)
 });
+
 
 var app = builder.Build();
 
@@ -42,7 +44,8 @@ else
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-app.UseAntiforgery();
+app.UseAntiforgery();  
+
 
 app.MapControllers();
 app.UseCors("AllowAll");
@@ -50,6 +53,8 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(StudentAffairsAuto.Client._Imports).Assembly);
+
+
 
 
 app.Run();

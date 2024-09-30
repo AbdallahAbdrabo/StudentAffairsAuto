@@ -2,6 +2,7 @@
 
 public class StudentDTO
 {
+    public int? StudentId { get; set; }
     public string? Name { get; set; }
     public DateOnly DateOfBirth { get; set; }
     public string? Gender { get; set; }

@@ -55,6 +55,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Students", "Students", "{74
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Students.Application", "Students.Application\Students.Application.csproj", "{B9618778-5ED4-4D53-82A0-264EF010569D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Client", "Shared.Client\Shared.Client.csproj", "{CAC7DC6D-5B09-46DF-BFAB-F4F9944FE49F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -129,6 +131,10 @@ Global
 		{B9618778-5ED4-4D53-82A0-264EF010569D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9618778-5ED4-4D53-82A0-264EF010569D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9618778-5ED4-4D53-82A0-264EF010569D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC7DC6D-5B09-46DF-BFAB-F4F9944FE49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC7DC6D-5B09-46DF-BFAB-F4F9944FE49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC7DC6D-5B09-46DF-BFAB-F4F9944FE49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC7DC6D-5B09-46DF-BFAB-F4F9944FE49F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,6 +162,7 @@ Global
 		{2D9CD8A1-5210-4385-B8F4-2BD763A60FEE} = {BA590119-F7B0-4D70-A269-1328B57CDB97}
 		{746810FC-5749-4893-902C-72D6A4426541} = {A1944CFF-EBA3-44F0-8171-21C23D4A81C1}
 		{B9618778-5ED4-4D53-82A0-264EF010569D} = {746810FC-5749-4893-902C-72D6A4426541}
+		{CAC7DC6D-5B09-46DF-BFAB-F4F9944FE49F} = {BA590119-F7B0-4D70-A269-1328B57CDB97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E0BC5FF-65BE-4B09-A3D4-68D054B575DC}

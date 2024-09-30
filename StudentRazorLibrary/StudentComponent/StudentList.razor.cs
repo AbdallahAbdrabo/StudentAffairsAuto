@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Components;
-using Students.Client.Dto;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using Microsoft.JSInterop;
 
 namespace StudentsClinet;
 public partial class StudentList
@@ -9,7 +7,9 @@ public partial class StudentList
     public List<StudentDTO>? Students = new();
     private bool _isLoading = true;
     private bool _isEmpty = false;
-    const string Url = "api/Student";
+    const string Url = "api/Students";
+    [Inject] private IJSRuntime? JSrun { get; set; }
+    public Modal? modalComponent;
     protected override async Task OnInitializedAsync()
     {
         try
@@ -33,9 +33,10 @@ public partial class StudentList
         try
         {
             
-            HttpResponseMessage studentJson = await httpClient.GetAsync($"api/Students");
-            studentJson.EnsureSuccessStatusCode();
-           
+            HttpResponseMessage responseMessage = await httpClient.GetAsync($"{Url}");
+            responseMessage.EnsureSuccessStatusCode();
+
+            Students = await responseMessage.Content.ReadFromJsonAsync<List<StudentDTO>>();
         }
         catch (HttpRequestException ex)
         {
@@ -44,28 +45,56 @@ public partial class StudentList
         
         _isEmpty = Students == null || !Students.Any();
     }
-
-    private void DeleteStudent(StudentDTO item)
+    private async Task DeleteStudent(StudentDTO item)
     {
-        ArgumentNullException.ThrowIfNull(item);
+        string? jsonContent = JsonSerializer.Serialize(item);
 
+        StringContent? content = new(jsonContent, Encoding.UTF8, "application/json");
+
+        try
+        {
+           
+            HttpRequestMessage? request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(Url, UriKind.Relative),
+                Content = content 
+            };
+
+            
+            HttpResponseMessage response = await httpClient.SendAsync(request);
+
+          
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Resource deleted successfully with body content.");
+            }
+            else
+            {
+                Console.WriteLine($"Failed to delete the resource. Status code: {response.StatusCode}");
+            }
+            await GetStudentsAsync();
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+
+        }
     }
+    private async void ShowModal()
+    {
 
 
-    //private async void ShowModal()
-    //{
-
-
-    //    if (modalComponent is not null)
-    //    {
-    //        await modalComponent.ShowModal();
-    //    }
-    //    else
-    //    {
-    //        Console.WriteLine("modalComponent is null.");
-    //    }
-    //}
-
-    private void GoToAddPage() { navigation.NavigateTo($"student/Create"); }
+        if (modalComponent is not null)
+        {
+            await modalComponent.ShowModal();
+        }
+        else
+        {
+            Console.WriteLine("modalComponent is null.");
+        }
+    }
+  
     private void GoToEditPage(int studentId) { navigation.NavigateTo($"Student/Edit/{studentId}"); }
 }

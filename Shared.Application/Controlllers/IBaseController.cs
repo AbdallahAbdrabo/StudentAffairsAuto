@@ -1,5 +1,5 @@
 ﻿namespace Shared.Application.Controlllers;
-public interface IBaseController<TViewModel>
+public interface IBaseController<TEntity, TViewModel>
                  where TViewModel : class
 {
     Task<IActionResult> Post([FromBody] TViewModel viewModel);
@@ -9,5 +9,5 @@ public interface IBaseController<TViewModel>
 
     Task<IActionResult> Put([FromBody] TViewModel viewModel);
 
-    IActionResult Delete([FromBody] TViewModel viewModel);
+    Task<IActionResult> Delete([FromBody] TViewModel viewModel);
 }

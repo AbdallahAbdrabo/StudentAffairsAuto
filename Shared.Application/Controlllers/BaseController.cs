@@ -1,11 +1,12 @@
 ﻿namespace Shared.Application.Controlllers;
 
-public class BaseController< TViewModel> : ControllerBase, IBaseController<TViewModel>
+public class BaseController<TEntity,TViewModel> : ControllerBase, IBaseController<TEntity ,TViewModel>
      where TViewModel : class
+     where TEntity : class
 {
-    private readonly IUnitOfWork<TViewModel> _unitOfWork;
+    private readonly IUnitOfWork<TEntity,TViewModel> _unitOfWork;
 
-    public BaseController(IUnitOfWork<TViewModel> unitOfWork)
+    public BaseController(IUnitOfWork<TEntity, TViewModel> unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
@@ -29,11 +30,11 @@ public class BaseController< TViewModel> : ControllerBase, IBaseController<TView
 
     }
     [HttpDelete]
-    public IActionResult Delete([FromBody] TViewModel viewModel)
+    public async Task<IActionResult> Delete([FromBody] TViewModel viewModel)
     {
         try
         {
-            _unitOfWork.Delete(viewModel);
+           await _unitOfWork.Delete(viewModel);
             return Ok();
         }
         catch (Exception ex)
