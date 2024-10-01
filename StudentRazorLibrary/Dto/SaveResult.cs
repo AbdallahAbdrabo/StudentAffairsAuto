@@ -8,6 +8,6 @@ namespace Students.Client.Dto;
 
 public class SaveResult
 {
-    public bool IsSuccess { get; set; }
+    public bool IsCreate { get; set; }
     public StudentDTO? Student { get; set; }
 }

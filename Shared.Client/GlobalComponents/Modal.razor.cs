@@ -5,11 +5,12 @@ namespace Shared;
 
 public partial class Modal
 {
-    [Parameter] public Guid Id { get; set; }
+    [Parameter] public Guid Id { get; set; } 
     [Parameter] public string? ModalTitle { get; set; }
     [Parameter] public string? Message { get; set; }
     [Parameter] public EventCallback OnSave { get; set; }
     [Inject] private IJSRuntime? JSrun { get; set; }
+    
     public async Task ShowModal()
     {
 
@@ -28,6 +29,8 @@ public partial class Modal
         {
             await JSrun.InvokeVoidAsync("ModalFunctionClose", Id);
             await OnSave.InvokeAsync();
+
+            
         }
         else
         {

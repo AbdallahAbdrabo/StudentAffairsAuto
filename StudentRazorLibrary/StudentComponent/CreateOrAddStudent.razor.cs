@@ -8,7 +8,7 @@ namespace StudentsClient;
 
 public partial class CreateOrAddStudent 
 {
-
+    [Parameter] public EventCallback<SaveResult> OnSave { get; set; }
     [Parameter] public StudentDTO? studentDTO { get; set; }
     [Parameter] public int? StudentId { get; set; }
     const string Url = "api/Students";
@@ -25,24 +25,15 @@ public partial class CreateOrAddStudent
     }
     private async Task HandleValidSubmit()
     {
-        if (studentDTO is null) throw new ArgumentNullException(nameof(studentDTO));
-
-        if (httpClient is not null)
+        var saveResult = new SaveResult()
         {
-            HttpResponseMessage response;
-            if (isCreate)
-            {
-                response = await httpClient.PostAsJsonAsync(Url, studentDTO);
-            }
-            else
-            {
+            IsCreate = isCreate,
+            Student = studentDTO,
 
-                response = await httpClient.PutAsJsonAsync(Url, studentDTO);
-            }
-            response.EnsureSuccessStatusCode();
-            //navigation.NavigateTo($"/student");
-            StateHasChanged();
-        }
+        };
+        await OnSave.InvokeAsync(saveResult);
+        //  studentDTO = new StudentDTO();
+       
     }
     
 }
