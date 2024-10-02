@@ -1,9 +1,9 @@
 ﻿@page "/courses"
 @namespace Courses.Client
-@using Shared
-@using Shared.Client
-@inject HttpClient httpClient
 
+
+@inject HttpClient httpClient
+@inject IStringLocalizer<Resource> localizer
 <PageTitle>Teaching staff</PageTitle>
 
 <ShowForm ButtonDescription="Add New Course">
@@ -11,7 +11,7 @@
 </ShowForm>
 <div class="container mt-5">
 
-    <h2>Teaching staff</h2>
+    <h2>Courses</h2>
     @if (_isLoading)
     {<table>
         <tr>
@@ -30,7 +30,7 @@
     }
     else if (_isEmpty)
     {
-        <div class="alert alert-info"> There is not faculty List Availlable</div>
+        <div class="alert alert-info"> There is not courses List Availlable</div>
     }
     else
     {
@@ -40,10 +40,10 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">@nameof(CourseDTO.CourseName)] (@course.CourseCode)</h5>
+                            <h5 class="card-title">@localizer[nameof(CourseDTO.CourseName)] (@course.CourseCode)</h5>
                             <p class="card-text">
-                                <strong>@nameof(CourseDTO.Description)] :</strong> @course.Description<br />
-                                <strong>@nameof(CourseDTO.DepartmentId)] :</strong> @course.DepartmentId
+                                <strong>@localizer[nameof(CourseDTO.Description)] :</strong> @course.Description<br />
+                                <strong>@localizer[nameof(CourseDTO.DepartmentId)] :</strong> @course.DepartmentId
                             </p>
                             <a @onclick="()=>ShowModal(course)" class="m-1 btn btn-danger  "><i class="bi bi-trash3  "></i></a>
 

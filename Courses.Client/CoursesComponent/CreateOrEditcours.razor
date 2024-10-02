@@ -1,5 +1,5 @@
 ﻿@namespace Courses.Client
-
+@inject IStringLocalizer<Resource> localizer
 @if (Course is not null)
 {
     <EditForm Model="Course" OnValidSubmit="HandleValidSubmit">
@@ -8,22 +8,22 @@
            <ValidationSummary />
 
         <div class="mb-3">
-            <label for="courseName" class="form-label">@nameof(CourseDTO.CourseName)</label>
+            <label for="courseName" class="form-label">@localizer[nameof(CourseDTO.CourseName)]</label>
             <InputText id="courseName" class="form-control" @bind-Value="Course.CourseName" />
         </div>
 
         <div class="mb-3">
-            <label for="courseCode" class="form-label">@nameof(CourseDTO.CourseCode)</label>
+            <label for="courseCode" class="form-label">@localizer[nameof(CourseDTO.CourseCode)]</label>
             <InputText id="courseCode" class="form-control" @bind-Value="Course.CourseCode" />
         </div>
 
         <div class="mb-3">
-            <label for="description" class="form-label">@nameof(CourseDTO.Description)</label>
+            <label for="description" class="form-label">@localizer[nameof(CourseDTO.Description)]</label>
             <InputTextArea id="description" class="form-control" @bind-Value="Course.Description" />
         </div>
 
         <div class="mb-3">
-            <label for="departmentId" class="form-label">@nameof(CourseDTO.DepartmentId)</label>
+            <label for="departmentId" class="form-label">@localizer[nameof(CourseDTO.DepartmentId)]</label>
             <InputNumber id="departmentId" class="form-control" @bind-Value="Course.DepartmentId" />
         </div>
 

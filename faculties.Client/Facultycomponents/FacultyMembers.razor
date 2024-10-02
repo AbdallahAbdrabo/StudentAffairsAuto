@@ -1,7 +1,8 @@
 ﻿@page "/faculty"
 @namespace faculties.Client
-@inject HttpClient httpClient
 
+@inject HttpClient httpClient
+@inject IStringLocalizer<Resource> localizer
 <PageTitle>Teaching staff</PageTitle>
 
 <ShowForm ButtonDescription="Add New Facluty">
@@ -40,10 +41,10 @@
                         <div class="card-body">
                             <h5 class="card-title">@faculty.Name</h5>
                             <p class="card-text">
-                                <strong>@nameof(FacultyDTO.Name):</strong> @faculty.Email<br />
-                                <strong>@nameof(FacultyDTO.PhoneNumber):</strong> @faculty.PhoneNumber<br />
-                                <strong>@nameof(FacultyDTO.OfficeLocation):</strong> @faculty.OfficeLocation<br />
-                                <strong>@nameof(FacultyDTO.Position):</strong> @faculty.Position<br />
+                                <strong>@localizer[nameof(FacultyDTO.Name)]:</strong> @faculty.Email<br />
+                                <strong>@localizer[nameof(FacultyDTO.PhoneNumber)]:</strong> @faculty.PhoneNumber<br />
+                                <strong>@localizer[nameof(FacultyDTO.OfficeLocation)]:</strong> @faculty.OfficeLocation<br />
+                                <strong>@localizer[nameof(FacultyDTO.Position)]:</strong> @faculty.Position<br />
 
                             </p>
                             <a @onclick="()=>ShowModal(faculty)" class="m-1 btn btn-danger  "><i class="bi bi-trash3  "></i></a>

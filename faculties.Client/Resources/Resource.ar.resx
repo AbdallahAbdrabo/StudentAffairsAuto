@@ -117,4 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DepartmentId" xml:space="preserve">
+    <value>رقم القسم</value>
+  </data>
+  <data name="DepartmentIdGreater" xml:space="preserve">
+    <value>معرف القسم مطلوب ويجب أن يكون أكبر من 0</value>
+  </data>
+  <data name="DepartmentIdValidation" xml:space="preserve">
+    <value>رقم القسم مطلوب</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>الايميل</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>عنوان البريد الإلكتروني غير صالح.</value>
+  </data>
+  <data name="EmailMaximumLength" xml:space="preserve">
+    <value>لا يمكن أن يتجاوز البريد الإلكتروني 100 حرف.</value>
+  </data>
+  <data name="EmailValidation" xml:space="preserve">
+    <value>الاميل مطلوب</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم </value>
+  </data>
+  <data name="NameMaximumLength" xml:space="preserve">
+    <value>لا يمكن أن يتجاوز الاسم 100 حرف.</value>
+  </data>
+  <data name="NameValidation" xml:space="preserve">
+    <value>الاسم مطلوب.</value>
+  </data>
+  <data name="OfficeLocation" xml:space="preserve">
+    <value>المكان </value>
+  </data>
+  <data name="OfficeLocationValidtion" xml:space="preserve">
+    <value>المكان مطلوب </value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>رقم الموبيل</value>
+  </data>
+  <data name="PhoneNumberFormat" xml:space="preserve">
+    <value>تنسيق رقم الهاتف غير صالح</value>
+  </data>
+  <data name="PhoneNumbermax" xml:space="preserve">
+    <value>لا يمكن أن يتجاوز رقم الهاتف 15 حرفًا.</value>
+  </data>
+  <data name="PhoneNumberValidattion" xml:space="preserve">
+    <value> رقم الموبيل مظلوب</value>
+  </data>
+  <data name="PositionValidation" xml:space="preserve">
+    <value>لا يمكن أن يتجاوز الموضع 50 حرفًا.</value>
+  </data>
 </root>

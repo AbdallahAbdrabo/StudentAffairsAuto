@@ -17,30 +17,30 @@
         Assembly.Load("Courses.Client"),
 
     };
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            var result = await JS.InvokeAsync<string>("blazorCulture.get");
-            CultureInfo culture;
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     if (firstRender)
+    //     {
+    //         var result = await JS.InvokeAsync<string>("blazorCulture.get");
+    //         CultureInfo culture;
 
-            if (!string.IsNullOrEmpty(result))
-            {
-                culture = new CultureInfo(result);
-            }
-            else
-            {
-                culture = new CultureInfo("en-US");
-            }
+    //         if (!string.IsNullOrEmpty(result))
+    //         {
+    //             culture = new CultureInfo(result);
+    //         }
+    //         else
+    //         {
+    //             culture = new CultureInfo("en-US");
+    //         }
 
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.DefaultThreadCurrentUICulture = culture;
-            // NavigationManager.NavigateTo($"/");
-
-
-            StateHasChanged();
+    //         CultureInfo.DefaultThreadCurrentCulture = culture;
+    //         CultureInfo.DefaultThreadCurrentUICulture = culture;
+    //         // NavigationManager.NavigateTo($"/");
 
 
-        }
-    }
+    //         StateHasChanged();
+
+
+    //     }
+    // }
 }

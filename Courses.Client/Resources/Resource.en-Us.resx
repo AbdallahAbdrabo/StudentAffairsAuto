@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CourseCode" xml:space="preserve">
+    <value>Course Code</value>
+  </data>
+  <data name="CourseCodeFormatValidation" xml:space="preserve">
+    <value>An error in writing the code</value>
+  </data>
+  <data name="CourseCodeValidation" xml:space="preserve">
+    <value>Course Code is required</value>
+  </data>
+  <data name="CourseName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="DepartmentId" xml:space="preserve">
+    <value>Department number</value>
+  </data>
+  <data name="DepartmentIdValidation" xml:space="preserve">
+    <value> Department number is required</value>
+  </data>
+  <data name="DescriptionValidation" xml:space="preserve">
+    <value>Description is required</value>
+  </data>
 </root>

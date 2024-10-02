@@ -2,7 +2,7 @@
 
 @inject HttpClient httpClient
 @inject NavigationManager navigation
-
+@inject IStringLocalizer<Resource> localizer
 @if (studentDTO is not null)
 {
     <EditForm Model="@studentDTO" OnValidSubmit="HandleValidSubmit">
@@ -10,37 +10,37 @@
         <ValidationSummary />
 
         <div>
-            <label for="name">@nameof(StudentDTO.Name)</label>
+            <label for="name">@localizer[nameof(StudentDTO.Name)]</label>
             <InputText id="name" @bind-Value="studentDTO.Name" class="form-control" />
         </div>
 
         <div>
-            <label for="dateOfBirth">@nameof(StudentDTO.DateOfBirth) :</label>
+            <label for="dateOfBirth">@localizer[nameof(StudentDTO.DateOfBirth)] :</label>
             <InputDate id="dateOfBirth" @bind-Value="studentDTO.DateOfBirth" class="form-control" />
         </div>
 
         <div>
-            <label for="gender">@nameof(StudentDTO.Gender):</label>
+            <label for="gender">@localizer[nameof(StudentDTO.Gender)]:</label>
             <InputText id="gender" @bind-Value="studentDTO.Gender" class="form-control" />
         </div>
 
         <div>
-            <label for="phoneNumber">@nameof(StudentDTO.PhoneNumber)</label>
+            <label for="phoneNumber">@localizer[nameof(StudentDTO.PhoneNumber)]</label>
             <InputText id="phoneNumber" @bind-Value="studentDTO.PhoneNumber" class="form-control" />
         </div>
 
         <div>
-            <label for="email">@nameof(StudentDTO.Email):</label>
+            <label for="email">@localizer[nameof(StudentDTO.Email)]:</label>
             <InputText id="email" @bind-Value="studentDTO.Email" class="form-control" />
         </div>
 
         <div>
-            <label for="address">@nameof(StudentDTO.Address):</label>
+            <label for="address">@localizer[nameof(StudentDTO.Address)]:</label>
             <InputText id="address" @bind-Value="studentDTO.Address" class="form-control" />
         </div>
 
         <div>
-            <label for="nationalId">@nameof(StudentDTO.NationalID)</label>
+            <label for="nationalId">@localizer[nameof(StudentDTO.NationalID)]</label>
             <InputText id="nationalId" @bind-Value="studentDTO.NationalID" class="form-control" />
         </div>
 

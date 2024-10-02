@@ -20,9 +20,14 @@ public partial class CultureSelector
         {
             if (CultureInfo.CurrentCulture != value)
             {
-                CultureInfo.CurrentCulture = value;
-                ChangeCultureAsync(value).ConfigureAwait(false);
-                
+                if (CultureInfo.CurrentCulture != value)
+                {
+                    CultureInfo.CurrentCulture = value;
+                    ChangeCultureAsync(value).ContinueWith(_ => InvokeAsync(StateHasChanged));
+                }
+                //CultureInfo.CurrentCulture = value;
+                //ChangeCultureAsync(value).ConfigureAwait(false);
+                //StateHasChanged();
                 
             }
         }

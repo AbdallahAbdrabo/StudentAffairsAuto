@@ -1,38 +1,38 @@
 ﻿@namespace  faculties.Client
 
-
+@inject IStringLocalizer<Resource> localizer
 @if (faculty is not null)
 {
     <EditForm Model="@faculty" OnValidSubmit="HandleValidSubmit">
     <FluentValidationValidator />
         <ValidationSummary />
         <div class="mb-3">
-            <label for="name" class="form-label">@nameof(FacultyDTO.Name)</label>
+            <label for="name" class="form-label">@localizer[nameof(FacultyDTO.Name)]</label>
             <InputText id="name" class="form-control" @bind-Value="faculty.Name" />
         </div>
 
         <div class="mb-3">
-            <label for="email" class="form-label">@nameof(FacultyDTO.Email)</label>
+            <label for="email" class="form-label">@localizer[nameof(FacultyDTO.Email)]</label>
             <InputText id="email" class="form-control" @bind-Value="faculty.Email" />
         </div>
 
         <div class="mb-3">
-            <label for="phoneNumber" class="form-label">@nameof(FacultyDTO.PhoneNumber)</label>
+            <label for="phoneNumber" class="form-label">@localizer[nameof(FacultyDTO.PhoneNumber)]</label>
             <InputText id="phoneNumber" class="form-control" @bind-Value="faculty.PhoneNumber" />
         </div>
 
         <div class="mb-3">
-            <label for="officeLocation" class="form-label">@nameof(FacultyDTO.OfficeLocation)]</label>
+            <label for="officeLocation" class="form-label">@localizer[nameof(FacultyDTO.OfficeLocation)]</label>
             <InputText id="officeLocation" class="form-control" @bind-Value="faculty.OfficeLocation" />
         </div>
 
         <div class="mb-3">
-            <label for="position" class="form-label">@nameof(FacultyDTO.Position)</label>
+            <label for="position" class="form-label">@localizer[nameof(FacultyDTO.Position)]</label>
             <InputText id="position" class="form-control" @bind-Value="faculty.Position" />
         </div>
 
         <div class="mb-3">
-            <label for="departmentId" class="form-label">@nameof(FacultyDTO.DepartmentId)</label>
+            <label for="departmentId" class="form-label">@localizer[nameof(FacultyDTO.DepartmentId)]</label>
             <InputNumber id="departmentId" class="form-control" @bind-Value="faculty.DepartmentId" />
         </div>
       

@@ -117,4 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DepartmentId" xml:space="preserve">
+    <value>Department number</value>
+  </data>
+  <data name="DepartmentIdGreater" xml:space="preserve">
+    <value>Department ID is required and must be greater than 0</value>
+  </data>
+  <data name="DepartmentIdValidation" xml:space="preserve">
+    <value> Department number is required</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Invalid email address.</value>
+  </data>
+  <data name="EmailMaximumLength" xml:space="preserve">
+    <value>Email cannot exceed 100 characters.</value>
+  </data>
+  <data name="EmailValidation" xml:space="preserve">
+    <value>Email is required</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameMaximumLength" xml:space="preserve">
+    <value>Name cannot exceed 100 characters.</value>
+  </data>
+  <data name="NameValidation" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="OfficeLocation" xml:space="preserve">
+    <value>Office Location</value>
+  </data>
+  <data name="OfficeLocationValidation" xml:space="preserve">
+    <value>Office Location is required</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="PhoneNumberFormat" xml:space="preserve">
+    <value>Invalid phone number format</value>
+  </data>
+  <data name="PhoneNumbermax" xml:space="preserve">
+    <value>Phone number cannot exceed 15 characters.</value>
+  </data>
+  <data name="PhoneNumberValidattion" xml:space="preserve">
+    <value>Mobile is required</value>
+  </data>
+  <data name="PositionValidataion" xml:space="preserve">
+    <value>Position cannot exceed 50 characters.</value>
+  </data>
 </root>

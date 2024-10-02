@@ -183,6 +183,9 @@
   <data name="OfficeLocationValidtion" xml:space="preserve">
     <value>المكان مطلوب </value>
   </data>
+  <data name="Operations" xml:space="preserve">
+    <value>العمليات</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>رقم الموبيل</value>
   </data>

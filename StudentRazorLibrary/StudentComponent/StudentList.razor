@@ -5,7 +5,7 @@
 
  @inject NavigationManager navigation
 @inject HttpClient httpClient
-
+@inject IStringLocalizer<Resource> localizer
 
  <ShowForm ButtonDescription="Add new Student">
  <CreateOrAddStudent OnSave="DoCreateOrEdit" />
@@ -16,15 +16,15 @@
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th scope="col">@nameof(StudentDTO.Name)</th>
-                <th scope="col">@nameof(StudentDTO.Email)</th>
-                <th scope="col">@nameof(StudentDTO.Gender)</th>
-                <th scope="col">@nameof(StudentDTO.DateOfBirth)</th>
-                <th scope="col">@nameof(StudentDTO.PhoneNumber) </th>
-                <th scope="col">@nameof(StudentDTO.Address)</th>
-                <th scope="col">@nameof(StudentDTO.NationalID)</th>
+                <th scope="col">@localizer[nameof(StudentDTO.Name)]</th>
+                <th scope="col">@localizer[nameof(StudentDTO.Email)]</th>
+                <th scope="col">@localizer[nameof(StudentDTO.Gender)]</th>
+                <th scope="col">@localizer[nameof(StudentDTO.DateOfBirth)]</th>
+                <th scope="col">@localizer[nameof(StudentDTO.PhoneNumber)] </th>
+                <th scope="col">@localizer[nameof(StudentDTO.Address)]</th>
+                <th scope="col">@localizer[nameof(StudentDTO.NationalID)]</th>
 
-                <th scope="col">Operations</th>
+                <th scope="col">@localizer["Operations"]</th>
             </tr>
         </thead>
         <tbody>

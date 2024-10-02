@@ -26,6 +26,8 @@ builder.Services.AddScoped(http => new HttpClient
     BaseAddress = new Uri(builder.Configuration.GetSection("BaseAddress").Value!)
 });
 
+// Continue with other service registrations
+
 
 var app = builder.Build();
 
