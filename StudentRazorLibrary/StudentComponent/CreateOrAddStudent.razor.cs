@@ -1,16 +1,9 @@
-
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-using Students.Client.Dto;
-using System.Net.Http;
-
 namespace StudentsClient;
 
 public partial class CreateOrAddStudent 
 {
     [Parameter] public EventCallback<SaveResult> OnSave { get; set; }
     [Parameter] public StudentDTO? studentDTO { get; set; }
-    [Parameter] public int? StudentId { get; set; }
     const string Url = "api/Students";
     bool isCreate = false;
    
@@ -33,7 +26,5 @@ public partial class CreateOrAddStudent
         };
         await OnSave.InvokeAsync(saveResult);
         //  studentDTO = new StudentDTO();
-       
     }
-    
 }

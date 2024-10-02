@@ -1,4 +1,4 @@
-﻿namespace Students.Application.Repository1;
+﻿namespace Students.Application;
 
 public class StudentsRepository : Repository<Student>, IStudentsRepository
 {

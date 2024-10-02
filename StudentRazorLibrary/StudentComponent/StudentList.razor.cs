@@ -1,8 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-using Shared;
-using Students.Client.Dto;
-
 namespace StudentsClinet;
 public partial class StudentList
 {
@@ -14,7 +9,7 @@ public partial class StudentList
     public Modal? modalComponent;
     private Guid currentModalId;
     private StudentDTO? studentToDelete;
-    private String? message = "areyou";
+   
     protected override async Task OnInitializedAsync()
     {
         try
@@ -32,13 +27,15 @@ public partial class StudentList
         }
         await base.OnInitializedAsync();
     }
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnAfterRender(bool firstRender)
     {
         if (firstRender)
         {
             currentModalId = Guid.NewGuid();
         }
+        base.OnAfterRender(firstRender);
     }
+  
     private async Task GetStudentsAsync()
     {
         try

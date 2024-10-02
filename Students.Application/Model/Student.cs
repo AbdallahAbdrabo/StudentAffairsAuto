@@ -1,4 +1,4 @@
-﻿namespace Students.Application.Model;
+﻿namespace Students.Application;
 public class Student
 {
     public int? StudentId { get; set; }

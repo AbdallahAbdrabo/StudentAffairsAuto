@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Students.Application.Model;
-using Students.Application.Repository1;
-
-namespace Students.Application.UnitOfWork1;
+﻿namespace Students.Application;
 
 public class StudentsUnitOfWork : UnitOfWork<Student, StudentDTO>, IStudentsUnitOfWork
 {
@@ -13,7 +9,4 @@ public class StudentsUnitOfWork : UnitOfWork<Student, StudentDTO>, IStudentsUnit
         _context = context;
         _studentsRepository = studentsRepository;
     }
-
-
 }
-

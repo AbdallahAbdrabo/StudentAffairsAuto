@@ -1,0 +1,58 @@
+﻿@page "/faculty"
+@namespace faculties.Client
+@inject HttpClient httpClient
+
+<PageTitle>Teaching staff</PageTitle>
+
+<ShowForm ButtonDescription="Add New Facluty">
+    <CreateorEditFaculty OnSave="DoCreateOrEdit" />
+</ShowForm>
+<div class="container mt-5">
+
+    <h2>Teaching staff</h2>
+    @if (_isLoading)
+    {<table>
+        <tr>
+            <td colspan="6" style="height: 100px;">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-center">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                        <h2>Loading...</h2>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </table>
+    }
+    else if (_isEmpty)
+    {
+        <div class="alert alert-info"> There is not faculty List Availlable</div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var faculty in FacultyMemberslist ??new())
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@faculty.Name</h5>
+                            <p class="card-text">
+                                <strong>@nameof(FacultyDTO.Name):</strong> @faculty.Email<br />
+                                <strong>@nameof(FacultyDTO.PhoneNumber):</strong> @faculty.PhoneNumber<br />
+                                <strong>@nameof(FacultyDTO.OfficeLocation):</strong> @faculty.OfficeLocation<br />
+                                <strong>@nameof(FacultyDTO.Position):</strong> @faculty.Position<br />
+
+                            </p>
+                            <a @onclick="()=>ShowModal(faculty)" class="m-1 btn btn-danger  "><i class="bi bi-trash3  "></i></a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+     <Modal @ref="modalComponent" Id="@currentModalId" ModalTitle="Delete" Message="Are you sure" OnSave="DeleteStudent" />
+</div>

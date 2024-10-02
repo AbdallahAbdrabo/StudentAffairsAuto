@@ -1,4 +1,4 @@
-﻿namespace Students.Application.UnitOfWork1;
+﻿namespace Students.Application;
 
 public interface IStudentsUnitOfWork : IUnitOfWork<Student, StudentDTO>
 {

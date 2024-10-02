@@ -12,8 +12,8 @@ using Shared.Application;
 namespace StudentAffairsAuto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240925174430_initial7")]
-    partial class initial7
+    [Migration("20241001174126_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace StudentAffairsAuto.Migrations
                     b.ToTable("Attendance");
                 });
 
-            modelBuilder.Entity("Courses.Application.Model.Course", b =>
+            modelBuilder.Entity("Courses.Application.Course", b =>
                 {
                     b.Property<int?>("CourseID")
                         .ValueGeneratedOnAdd()
@@ -63,20 +63,43 @@ namespace StudentAffairsAuto.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("CourseID"));
 
                     b.Property<string>("CourseCode")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("CourseName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("CourseID");
 
-                    b.ToTable("Course");
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Courses", (string)null);
+                });
+
+            modelBuilder.Entity("Departments.Application.Model.Department", b =>
+                {
+                    b.Property<int>("DepartmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentID"));
+
+                    b.Property<string>("DepartmentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DepartmentID");
+
+                    b.ToTable("Department");
                 });
 
             modelBuilder.Entity("Enrollments.Application.Model.Enrollment", b =>
@@ -156,27 +179,13 @@ namespace StudentAffairsAuto.Migrations
                     b.ToTable("ExamResult");
                 });
 
-            modelBuilder.Entity("Shared.Application.Test", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Tests");
-                });
-
             modelBuilder.Entity("Students.Application.Model.Student", b =>
                 {
                     b.Property<int?>("StudentId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("StudentId"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -218,9 +227,47 @@ namespace StudentAffairsAuto.Migrations
                     b.ToTable("Students", (string)null);
                 });
 
+            modelBuilder.Entity("faculties.Application.Model.Faculty", b =>
+                {
+                    b.Property<int?>("FucultyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("FucultyId"));
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("OfficeLocation")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Position")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("FucultyId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Faculties", (string)null);
+                });
+
             modelBuilder.Entity("Attendances.Application.Model.Attendance", b =>
                 {
-                    b.HasOne("Courses.Application.Model.Course", "Course")
+                    b.HasOne("Courses.Application.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -235,9 +282,18 @@ namespace StudentAffairsAuto.Migrations
                     b.Navigation("Course");
                 });
 
+            modelBuilder.Entity("Courses.Application.Course", b =>
+                {
+                    b.HasOne("Departments.Application.Model.Department", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Enrollments.Application.Model.Enrollment", b =>
                 {
-                    b.HasOne("Courses.Application.Model.Course", "Course")
+                    b.HasOne("Courses.Application.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -254,7 +310,7 @@ namespace StudentAffairsAuto.Migrations
 
             modelBuilder.Entity("Exams.Application.Model.Exam", b =>
                 {
-                    b.HasOne("Courses.Application.Model.Course", null)
+                    b.HasOne("Courses.Application.Course", null)
                         .WithMany("Exams")
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -272,9 +328,25 @@ namespace StudentAffairsAuto.Migrations
                     b.Navigation("Exam");
                 });
 
-            modelBuilder.Entity("Courses.Application.Model.Course", b =>
+            modelBuilder.Entity("faculties.Application.Model.Faculty", b =>
+                {
+                    b.HasOne("Departments.Application.Model.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Courses.Application.Course", b =>
                 {
                     b.Navigation("Exams");
+                });
+
+            modelBuilder.Entity("Departments.Application.Model.Department", b =>
+                {
+                    b.Navigation("Courses");
                 });
 
             modelBuilder.Entity("Exams.Application.Model.Exam", b =>

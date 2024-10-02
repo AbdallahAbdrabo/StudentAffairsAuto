@@ -1,4 +1,4 @@
-﻿namespace Shared.Application.Repository;
+﻿namespace Shared.Application;
 
 public interface IRepository<TEntity>
     where TEntity : class

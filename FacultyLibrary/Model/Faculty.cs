@@ -1,7 +1,4 @@
-﻿using Departments.Application.Model;
-using System.ComponentModel.DataAnnotations;
-
-namespace faculties.Application.Model;
+﻿namespace faculties.Application;
 
 public class Faculty
 {

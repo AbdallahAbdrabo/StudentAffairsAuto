@@ -1,0 +1,58 @@
+﻿@namespace Courses.Client
+
+@if (Course is not null)
+{
+    <EditForm Model="Course" OnValidSubmit="HandleValidSubmit">
+         
+         <FluentValidationValidator />
+           <ValidationSummary />
+
+        <div class="mb-3">
+            <label for="courseName" class="form-label">@nameof(CourseDTO.CourseName)</label>
+            <InputText id="courseName" class="form-control" @bind-Value="Course.CourseName" />
+        </div>
+
+        <div class="mb-3">
+            <label for="courseCode" class="form-label">@nameof(CourseDTO.CourseCode)</label>
+            <InputText id="courseCode" class="form-control" @bind-Value="Course.CourseCode" />
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">@nameof(CourseDTO.Description)</label>
+            <InputTextArea id="description" class="form-control" @bind-Value="Course.Description" />
+        </div>
+
+        <div class="mb-3">
+            <label for="departmentId" class="form-label">@nameof(CourseDTO.DepartmentId)</label>
+            <InputNumber id="departmentId" class="form-control" @bind-Value="Course.DepartmentId" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </EditForm>
+}
+
+@code {
+    [Parameter] public EventCallback<SaveResult> OnSave { get; set; }
+    private CourseDTO? Course = new();
+    const string Url = "api/Students";
+    bool isCreate = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Course is null)
+        {
+            Course = new();
+            isCreate = true;
+        }
+        await base.OnInitializedAsync();
+    }
+    private async Task HandleValidSubmit()
+    {
+        var saveResult = new SaveResult()
+            {
+                IsCreate = isCreate,
+                course = Course,
+            };
+        await OnSave.InvokeAsync(saveResult);
+    }
+}

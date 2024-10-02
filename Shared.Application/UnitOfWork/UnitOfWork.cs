@@ -1,4 +1,4 @@
-﻿namespace Shared.Application.UnitOfWork;
+﻿namespace Shared.Application;
 
 public class UnitOfWork<TEntity , TViewModel> : IUnitOfWork<TEntity , TViewModel >
     where TEntity : class where TViewModel : class

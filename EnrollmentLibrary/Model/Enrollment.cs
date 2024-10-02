@@ -1,4 +1,4 @@
-﻿using Courses.Application.Model;
+﻿using Courses.Application;
 
 
 namespace Enrollments.Application.Model;

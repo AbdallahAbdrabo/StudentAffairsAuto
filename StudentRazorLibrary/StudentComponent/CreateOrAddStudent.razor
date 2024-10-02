@@ -1,12 +1,7 @@
-﻿@page "/Student/Edit/{StudentId:int?}"
-@page "/student/Create"
+﻿@namespace StudentsClient
 
-@namespace StudentsClient
-@using Blazored.FluentValidation
-@using Microsoft.AspNetCore.Components.Forms
 @inject HttpClient httpClient
 @inject NavigationManager navigation
- @* @inject IStringLocalizer<Resource> localizer *@
 
 @if (studentDTO is not null)
 {

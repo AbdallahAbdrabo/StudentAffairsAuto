@@ -1,4 +1,4 @@
-﻿namespace Shared.Application.Controlllers;
+﻿namespace Shared.Application;
 public interface IBaseController<TEntity, TViewModel>
                  where TViewModel : class
 {

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DepartmentLibrary\Departments.Application.csproj" />
+    <ProjectReference Include="..\faculties.Client\faculties.Client.csproj" />
     <ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
   </ItemGroup>
 

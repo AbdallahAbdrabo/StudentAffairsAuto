@@ -8,7 +8,11 @@
 
   <ItemGroup>
     
+    <ProjectReference Include="..\Courses.Client\Courses.Client.csproj" />
+    
     <ProjectReference Include="..\ExamLibrary\Exams.Application.csproj" />
+    
+    <ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
   </ItemGroup>
 
 </Project>

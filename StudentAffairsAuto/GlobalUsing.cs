@@ -1,1 +1,9 @@
-﻿
+﻿global using Courses.Application;
+global using faculties.Application;
+global using Shared.Application;
+global using StudentAffairsAuto.Components;
+global using Students.Application;
+global using AutoMapper;
+global using Courses.Client;
+global using faculties.Client;
+global using Students.Client;

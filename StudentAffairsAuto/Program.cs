@@ -1,11 +1,6 @@
-using Microsoft.EntityFrameworkCore;
-using Shared.Application;
-using Shared.Application.UnitOfWork;
-using StudentAffairsAuto.Client.Pages;
-using StudentAffairsAuto.Components;
-using Students.Application.Repository1;
-using Students.Application.UnitOfWork1;
-using System.Globalization;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +13,13 @@ builder.Services.AddLocalization();
 builder.Services.AddDbContext<ApplicationDbContext>();
 
 builder.Services.AddScoped<IStudentsRepository, StudentsRepository>();
+builder.Services.AddScoped<IFaculiesRepository, FaculiesRepository>();
+builder.Services.AddScoped<ICoursesRepository, CoursesRepository>();
 
 builder.Services.AddScoped<IStudentsUnitOfWork, StudentsUnitOfWork>();
+builder.Services.AddScoped<IFacultiesUnitOfWork, FacultiesUnitOfWork>();
+builder.Services.AddScoped<ICoursesUnitOfWork, CoursesUnitOfWork>();
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped(http => new HttpClient
 {

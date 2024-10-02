@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
-
 namespace Shared;
 
 public partial class Modal
@@ -29,15 +26,10 @@ public partial class Modal
         {
             await JSrun.InvokeVoidAsync("ModalFunctionClose", Id);
             await OnSave.InvokeAsync();
-
-            
         }
         else
         {
             Console.WriteLine("JSRuntime is null.");
         }
-
-
     }
-
 }

@@ -1,4 +1,4 @@
-﻿namespace Students.Client.Dto;
+﻿namespace Students.Client;
 
 public class StudentDTO
 {

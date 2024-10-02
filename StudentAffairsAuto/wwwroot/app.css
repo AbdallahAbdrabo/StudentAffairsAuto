@@ -46,7 +46,7 @@ h1:focus {
 
 .container {
     background-color: #004b87;
-    color: white;
+    /*color: white;*/
     padding: 20px;
     border-radius: 8px;
 }

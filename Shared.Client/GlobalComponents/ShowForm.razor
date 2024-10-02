@@ -1,0 +1,13 @@
+﻿@namespace Shared.Client
+@inject IJSRuntime JSRuntime
+
+@if (ButtonDescription is not null)
+{
+    <button class="show-modal btn btn-success ">@ButtonDescription</button>
+}
+
+<div class=" modalshow  hidden p-3 ">
+    <button class="close-modal">&times;</button>
+    @ChildContent
+</div>
+<div class="overlay hidden"></div>

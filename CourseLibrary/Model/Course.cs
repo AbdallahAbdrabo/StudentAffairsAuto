@@ -2,7 +2,7 @@
 using Exams.Application.Model;
 
 
-namespace Courses.Application.Model;
+namespace Courses.Application;
 
 public class Course
 {
@@ -10,8 +10,6 @@ public class Course
     public string? CourseName { get; set; }
     public string? Description { get; set; }
     public string? CourseCode { get; set; }
-
-    
 
     public ICollection<Exam>? Exams { get; set; }
 
